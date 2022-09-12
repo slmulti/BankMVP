@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Scanner;
 public class Account {
     //class Variables
@@ -43,9 +45,12 @@ public class Account {
     //func to calc interest
     void calculateInterest(int years){
         double interestRate = 0.0185; //decimal version of percentage
+        BigDecimal interestRate2D = new BigDecimal(100*interestRate).setScale(2, RoundingMode.HALF_UP);
         double newBalance = (balance*interestRate*years) + balance;
-        System.out.println("The Current interest rate is " + (100*interestRate)+"%");
+        double interestTotal = newBalance - balance;
+        System.out.println("The Current interest rate is " + (interestRate2D)+"%");
         System.out.println("After " + years + " years, your balance will be: " + newBalance);
+        System.out.println("the total interest earned will be: £" + interestTotal);
     }
 
     void showMenu(){
