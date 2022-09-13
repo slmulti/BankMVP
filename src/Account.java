@@ -53,6 +53,17 @@ public class Account {
         System.out.println("the total interest earned will be: £" + interestTotal);
     }
 
+    void repeatMenu(){
+        System.out.println("What would you like to do next?");
+        System.out.println();
+        System.out.println("A. Check your Balance");
+        System.out.println("B. Make a Deposit");
+        System.out.println("C. Make a Withdrawal");
+        System.out.println("D. View Previous Transaction");
+        System.out.println("E. Calculate Interest");
+        System.out.println("F. Exit");
+    }
+
     void showMenu(){
         char option = '\0'; //do i need this placeholder, can i just do char = option; no placeholder is actually needed
         Scanner scanner = new Scanner(System.in);
@@ -79,9 +90,10 @@ public class Account {
                 //case 'A' check balance
                 case 'A':
                     System.out.println("==========================");
-                    System.out.println("Balance = $" + balance);
+                    System.out.println("Balance = £" + balance);
                     System.out.println("==========================");
                     System.out.println();
+                    repeatMenu();
                     break;
                 //case B accepts an amount to deposit
                 case 'B':
@@ -89,6 +101,7 @@ public class Account {
                     int amount = scanner.nextInt();
                     deposit(amount);
                     System.out.println();
+                    repeatMenu();
                     break;
                 //case C accepts Withdrawal
                 case 'C':
@@ -96,6 +109,7 @@ public class Account {
                     int amount2 = scanner.nextInt();
                     withdraw(amount2);
                     System.out.println();
+                    repeatMenu();
                     break;
                 //case D shows previous transaction
                 case 'D':
@@ -103,12 +117,14 @@ public class Account {
                     getPreviousTransaction();
                     System.out.println("==========================");
                     System.out.println();
+                    repeatMenu();
                     break;
                 //case E Calcs the interest for chosen years
                 case 'E':
                     System.out.println("Enter how many years of accured interest: ");
                     int years = scanner.nextInt();
                     calculateInterest(years);
+                    repeatMenu();
                     break;
                 //case F exits
                 case 'F':
@@ -117,6 +133,7 @@ public class Account {
                 //if something invalid is entered
                 default:
                     System.out.println("Error: invalid option. Please enter A, B, C, D, E or F");
+                    repeatMenu();
                     break;
             }
         } while (option != 'F');
